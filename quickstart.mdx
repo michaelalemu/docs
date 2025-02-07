@@ -7,30 +7,32 @@ description: 'Start integrating FXEthio’s API in minutes'
 
 To get started using FXEthio’s API, follow these simple steps:
 
-<AccordionGroup>
-  <Accordion icon="user" title="1. Create an Account">
-    To begin, you’ll need to create an account with FXEthio. Head over to our [sign-up page](#) and fill in the necessary details to register.
-  </Accordion>
+<Steps>
+  <Step icon="user" title="1. Create an Account">
+    To begin, you’ll need to create an account with FXEthio. Head over to our [sign-up page](https://fxethio.com/pricing), choose a plan and fill in the necessary details to register.
+  </Step>
 
-  <Accordion icon="key" title="2. Create an API Key">
+  <Step icon="key" title="2. Create an API Key">
     After signing up, log in to your dashboard and generate an API key. This key will give you access to FXEthio’s foreign exchange rate data. Go to the API section in your dashboard to create your key.
 
-    **Important**: Make sure to save your API key, as it will not be shown again once you navigate away from this page.
-  </Accordion>
+    <Note>
+      Make sure to save your API key, as it will not be shown again once you navigate away from this page.
+    </Note>
+  </Step>
 
-  <Accordion icon="plug" title="3. Use the API Key">
+  <Step icon="plug" title="3. Use the API Key">
     To make authenticated requests to FXEthio’s API, include the API key in the `x-api-header` of your HTTP requests.
 
     Example:
 
     ```bash
-    curl -X GET "https://api.fxethio.com/endpoint" \
-    -H "x-api-key: your-api-key-here"
+    curl -X GET "https://fxethio.com/api/v1/[endpoint]" \
+    -H "x-api-key: [your-api-key-here]"
     ```
 
     This key will authenticate each of your requests to access live exchange rate data from Ethiopian banks against major currencies.
-  </Accordion>
-</AccordionGroup>
+  </Step>
+</Steps>
 
 ## Customize Your Usage
 
@@ -38,14 +40,14 @@ Once you’ve integrated the FXEthio API, you can customize your usage based on 
 
 <AccordionGroup>
   <Accordion icon="sliders" title="Adjusting API Limits">
-    Depending on your plan, you might have different API call limits. You can check your current usage and remaining calls through the FXEthio dashboard.
+    Depending on your plan, you might have different API call limits. You can check your current usage and remaining calls through the FXEthio [dashboard](https://fxethio.com/dashboard).
   </Accordion>
 
   <Accordion icon="chart-line" title="Access Real-Time Exchange Rates">
     Use the API to get live exchange rates from all major currencies to Ethiopian Birr (ETB) based on data from all Ethiopian banks. You can access the latest rates in real-time with a simple API request.
   </Accordion>
 
-  <Accordion icon="refresh" title="Refill and Reset Quotas">
+  <Accordion title="Refill and Reset Quotas" icon="rotate">
     If your plan has a usage limit, it will reset based on your plan’s refill schedule. Make sure to track your usage to avoid interruptions in your service.
   </Accordion>
 </AccordionGroup>
