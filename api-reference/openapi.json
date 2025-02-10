@@ -1,94 +1,40 @@
 {
-  "openapi": "3.0.1",
+  "openapi": "3.0.0",
   "info": {
-    "title": "OpenAPI Plant Store",
-    "description": "A sample API that uses a plant store as an example to demonstrate features in the OpenAPI specification",
-    "license": {
-      "name": "MIT"
-    },
+    "title": "Exchange Rate API",
+    "description": "An API providing real-time exchange rates from various banks in Ethiopia.",
     "version": "1.0.0"
   },
   "servers": [
     {
-      "url": "http://sandbox.mintlify.com"
-    }
-  ],
-  "security": [
-    {
-      "bearerAuth": []
+      "url": "https://fxethio.com/api/v1",
+      "description": "Production server"
     }
   ],
   "paths": {
-    "/plants": {
+    "/exchange-rates": {
       "get": {
-        "description": "Returns all plants from the system that the user has access to",
-        "parameters": [
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "The maximum number of results to return",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
+        "summary": "Get all exchange rates",
+        "description": "Fetches the latest exchange rates from all available banks.",
         "responses": {
           "200": {
-            "description": "Plant response",
+            "description": "A list of exchange rates",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Plant"
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/ExchangeRate"
+                      }
+                    }
                   }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "description": "Creates a new plant in the store",
-        "requestBody": {
-          "description": "Plant to add to the store",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewPlant"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "plant response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Plant"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
                 }
               }
             }
@@ -96,32 +42,61 @@
         }
       }
     },
-    "/plants/{id}": {
-      "delete": {
-        "description": "Deletes a single plant based on the ID supplied",
+    "/exchange-rates/{currency}": {
+      "get": {
+        "summary": "Get exchange rates for a specific currency",
+        "description": "Fetches the exchange rate data for a specific currency across all banks.",
         "parameters": [
           {
-            "name": "id",
+            "name": "currency",
             "in": "path",
-            "description": "ID of plant to delete",
             "required": true,
             "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
+              "type": "string",
+              "example": "USD"
+            },
+            "description": "The currency code (e.g., USD, EUR, GBP)."
           }
         ],
         "responses": {
-          "204": {
-            "description": "Plant deleted",
-            "content": {}
-          },
-          "400": {
-            "description": "unexpected error",
+          "200": {
+            "description": "Exchange rate data for the specified currency",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/ExchangeRateWithLogo"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Currency not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "error"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Currency not found"
+                    }
+                  }
                 }
               }
             }
@@ -132,63 +107,60 @@
   },
   "components": {
     "schemas": {
-      "Plant": {
-        "required": [
-          "name"
-        ],
+      "ExchangeRate": {
         "type": "object",
         "properties": {
-          "name": {
-            "description": "The name of the plant",
-            "type": "string"
+          "bank_id": {
+            "type": "integer",
+            "example": 1
           },
-          "tag": {
-            "description": "Tag to specify the type",
-            "type": "string"
+          "id": {
+            "type": "integer",
+            "example": 35790
+          },
+          "bank_name": {
+            "type": "string",
+            "example": "Wegagen Bank"
+          },
+          "currency": {
+            "type": "string",
+            "example": "CHF"
+          },
+          "buying": {
+            "type": "number",
+            "format": "float",
+            "example": 137.1675
+          },
+          "selling": {
+            "type": "number",
+            "format": "float",
+            "example": 139.9109
+          },
+          "applicabletimestamp": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-02-10T00:00:00+00:00"
+          },
+          "fetchedtimestamp": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-02-10T14:54:08.738+00:00"
           }
         }
       },
-      "NewPlant": {
+      "ExchangeRateWithLogo": {
         "allOf": [
+          { "$ref": "#/components/schemas/ExchangeRate" },
           {
-            "$ref": "#/components/schemas/Plant"
-          },
-          {
-            "required": [
-              "id"
-            ],
             "type": "object",
             "properties": {
-              "id": {
-                "description": "Identification number of the plant",
-                "type": "integer",
-                "format": "int64"
+              "logo_url": {
+                "type": "string",
+                "example": "logos/e82f1de6-cb44-460f-8959-e2dbcc4e580f.png"
               }
             }
           }
         ]
-      },
-      "Error": {
-        "required": [
-          "error",
-          "message"
-        ],
-        "type": "object",
-        "properties": {
-          "error": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "message": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer"
       }
     }
   }
