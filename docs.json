@@ -59,7 +59,7 @@
         "tab": "Changelog",
         "groups": [
           {
-            "group": "Product Updates",
+            "group": "Changelog",
             "pages": [
               "changelog/product-updates"
             ]
