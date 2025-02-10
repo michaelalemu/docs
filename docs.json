@@ -55,6 +55,17 @@
           }
         ]
       }
+      {
+        "tab": "Changelog",
+        "groups": [
+          {
+            "group": "Product Updates",
+            "pages": [
+              "release-notes/introduction"
+            ]
+          },
+        ]
+      }
     ],
     "global": {
       "anchors": [
