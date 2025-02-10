@@ -47,9 +47,8 @@
           {
             "group": "Endpoint Examples",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete"
+              "api-reference/endpoint/get-exchange-rates",
+              "api-reference/endpoint/get-exchange-rates-by-currency",
             ]
           }
         ]
