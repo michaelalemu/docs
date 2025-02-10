@@ -30,7 +30,7 @@
             "group": "Endpoints",
             "pages": [
               "api-reference/endpoint/get-exchange-rates",
-              "api-reference/endpoint/get-exchange-rates-by-currency",
+              "api-reference/endpoint/get-exchange-rates-by-currency"
             ]
           }
         ]
