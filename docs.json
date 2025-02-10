@@ -3,9 +3,9 @@
   "theme": "mint",
   "name": "FXEthio Documentation",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#B249F8",
+    "light": "#FF1CF7",
+    "dark": "#722DA8"
   },
   "favicon": "/favicon.svg",
   "navigation": {
@@ -32,17 +32,6 @@
               "api-reference/endpoint/get",
               "api-reference/endpoint/create",
               "api-reference/endpoint/delete"
-            ]
-          },
-          {
-            "group": "Essentials",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/settings",
-              "essentials/navigation",
-              "essentials/reusable-snippets"
             ]
           }
         ]
@@ -71,17 +60,12 @@
       "anchors": [
         {
           "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
+          "href": "https://developers.fxethio.com",
           "icon": "book-open-cover"
         },
         {
-          "anchor": "Community",
-          "href": "https://mintlify.com/community",
-          "icon": "slack"
-        },
-        {
           "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
+          "href": "https://fxethio.com/blog",
           "icon": "newspaper"
         }
       ]
@@ -93,6 +77,10 @@
   },
   "navbar": {
     "links": [
+      {
+        "label": "Home",
+        "href": "https://fxethio.com"
+      },
       {
         "label": "Support",
         "href": "mailto:support@fxethio.com"
