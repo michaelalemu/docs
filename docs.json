@@ -61,7 +61,7 @@
           {
             "group": "Product Updates",
             "pages": [
-              "release-notes/product-updates"
+              "changelog/product-updates"
             ]
           }
         ]
