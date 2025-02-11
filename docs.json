@@ -7,7 +7,7 @@
     "light": "#FF1CF7",
     "dark": "#722DA8"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/logo/fxethio-dark.svg",
   "navigation": {
     "tabs": [
       {
@@ -81,8 +81,8 @@
     }
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/logo/fxethio-light.svg",
+    "dark": "/logo/fxethio-dark.svg"
   },
   "navbar": {
     "links": [
