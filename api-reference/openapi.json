@@ -96,18 +96,17 @@
         }
       }
     },
-    "/plants/{id}": {
-      "delete": {
-        "description": "Deletes a single plant based on the ID supplied",
+    "/exchange-rates/{currency}": {
+      "get": {
+        "description": "Gets the latest exchange rates based on the currency supplied",
         "parameters": [
           {
-            "name": "id",
+            "name": "currency",
             "in": "path",
-            "description": "ID of plant to delete",
+            "description": "Currency for which the rates should be fetched",
             "required": true,
             "schema": {
-              "type": "integer",
-              "format": "int64"
+              "type": "string",
             }
           }
         ],
