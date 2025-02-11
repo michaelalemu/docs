@@ -10,12 +10,12 @@
   },
   "servers": [
     {
-      "url": "http://fxethio.com/api/v1"
+      "url": "https://fxethio.com/api/v1"
     }
   ],
   "security": [
     {
-      "bearerAuth": []
+      "ApiKeyAuth": []
     }
   ],
   "paths": {
@@ -186,9 +186,11 @@
       }
     },
     "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer"
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-KEY",
+        "description": "API Key required to access this endpoint."
       }
     }
   }
